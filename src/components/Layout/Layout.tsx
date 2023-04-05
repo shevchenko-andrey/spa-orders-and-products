@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Avatar } from "./Avatar";
 import { NavMenu } from "./NavMenu";
+import { TopBar } from "./TopBar";
 
 interface ILayoutProps {
   children: JSX.Element | JSX.Element[];
@@ -17,8 +18,10 @@ const pages = [
 export const Layout: FC<ILayoutProps> = ({ children }) => {
   return (
     <>
-      <main className="w-full sm:flex h-screen">
-        <div className="w-3/12 sm:block hidden py-12">
+      <TopBar />
+
+      <main className="w-full md:flex h-screen">
+        <div className="w-3/12 md:block hidden py-12">
           <Avatar image="/avatar.jpeg" />
 
           <div className="mt-10">
@@ -26,7 +29,7 @@ export const Layout: FC<ILayoutProps> = ({ children }) => {
           </div>
         </div>
 
-        <div className="md:w-9/12 sm:w-full h-screen bg-secondary">{children}</div>
+        <div className="md:w-9/12 w-full h-screen bg-secondary">{children}</div>
       </main>
     </>
   );

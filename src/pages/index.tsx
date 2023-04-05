@@ -1,10 +1,6 @@
-import { Layout } from "../components/Layout";
+import { ComingSoon } from "@/components/ComingSoon";
 
 const Home = () => {
-  return (
-    <Layout title="Home">
-      <p className="text-4xl">Set up</p>
-    </Layout>
-  );
+  return <ComingSoon />;
 };
 export default Home;

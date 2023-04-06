@@ -14,7 +14,9 @@ export const NavItem: React.FC<NavItemProps> = ({ name, link }) => {
   return (
     <li className="flex justify-center items-center mt-3">
       <Link
-        className={`text-lg uppercase ${isCurrentPath ? "border-b-4 border-primary" : ""}`}
+        className={`text-lg uppercase hover:border-b-4 hover:border-primary" ${
+          isCurrentPath ? "border-b-4 border-primary" : ""
+        }`}
         href={link}
       >
         {name}

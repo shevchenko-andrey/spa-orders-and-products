@@ -17,20 +17,22 @@ const pages = [
 
 export const Layout: FC<ILayoutProps> = ({ children }) => {
   return (
-    <>
+    <div className="h-screen overflow-hidden">
       <TopBar />
 
-      <main className="w-full md:flex h-screen">
+      <main className="w-full h-full md:flex">
         <div className="w-3/12 md:block hidden py-12">
           <Avatar image="/avatar.jpeg" />
 
-          <div className="mt-10">
+          <div className="mt-10 overflow-auto">
             <NavMenu pages={pages} />
           </div>
         </div>
 
-        <div className="md:w-9/12 w-full h-screen bg-secondary">{children}</div>
+        <div className="md:w-9/12 w-full h-full p-2 overflow-auto bg-secondary">
+          <div className="md:py-20 ">{children}</div>
+        </div>
       </main>
-    </>
+    </div>
   );
 };

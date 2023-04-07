@@ -8,3 +8,10 @@ export interface IOrder {
   productsCount: number;
   prices: IPrice[];
 }
+
+export interface IOrderInfo {
+  id: number;
+  title: string;
+  date: Date;
+  description: string;
+}

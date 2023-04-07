@@ -1,5 +1,16 @@
 import { IProduct } from "@/common/interfaces/product.interfaces";
+import { ProductItem } from "./ProductItem";
 
-export const Product: React.FC<IProduct> = ({}) => {
-  return null;
+interface IProductListProps {
+  products: IProduct[];
+}
+
+export const ProductList: React.FC<IProductListProps> = ({ products }) => {
+  return (
+    <ul>
+      {products.map((product: IProduct) => (
+        <ProductItem key={product.id} product={product} />
+      ))}
+    </ul>
+  );
 };

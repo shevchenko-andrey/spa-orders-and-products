@@ -1,3 +1,4 @@
+import { IOrderInfo } from "./order.interfaces";
 export interface IPrice {
   value: number;
   symbol: string;
@@ -13,12 +14,13 @@ export interface IProduct {
   id: number;
   serialNumber: number;
   isNew: number;
+  isAvailable: number;
+  order: IOrderInfo;
   photo: string;
   title: string;
   type: string;
   specification: string;
   guarantee: IGuarantee;
-  price: IPrice[];
-  order: number;
+  prices: IPrice[];
   date: string;
 }

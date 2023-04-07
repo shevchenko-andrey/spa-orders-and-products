@@ -1,14 +1,9 @@
 import { IOrder } from "@/common/interfaces/order.interfaces";
-import { useMemo } from "react";
 import { FaList } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { OrderPrice } from "../OrderPrice";
+import { OrderPrice } from "../../OrderPrice";
 
 export const OrderItem: React.FC<IOrder> = ({ title, date, productsCount, prices }) => {
-  const defaultPrice = useMemo(() => prices.find(({ isDefault }) => isDefault), [prices]);
-
-  const otherPrices = useMemo(() => prices.filter(({ isDefault }) => !isDefault), [prices]);
-
   return (
     <li
       className={`group/order relative md:w-full xl:flex xl:items-center
@@ -28,7 +23,7 @@ export const OrderItem: React.FC<IOrder> = ({ title, date, productsCount, prices
       <div className="grid gap-3 xl:gap-8 xl:w-1/2 xl:items-center xl:grid-cols-3">
         <p>Products: {productsCount}</p>
         <p>{date.toLocaleString()}</p>
-        <OrderPrice prices={otherPrices} defaultPrice={defaultPrice} />
+        <OrderPrice prices={prices} />
       </div>
       <div className="flex justify-end">
         <button className="p-3 xl:static absolute bottom-1 right-1 group">

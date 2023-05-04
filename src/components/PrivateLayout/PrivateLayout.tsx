@@ -15,7 +15,7 @@ const pages = [
   { name: "Settings", link: "/settings" },
 ];
 
-export const Layout: FC<ILayoutProps> = ({ children }) => {
+export const PrivateLayout: FC<ILayoutProps> = ({ children }) => {
   return (
     <div className="h-screen overflow-hidden">
       <TopBar />
@@ -30,7 +30,7 @@ export const Layout: FC<ILayoutProps> = ({ children }) => {
         </div>
 
         <div className="md:w-9/12 w-full h-full p-2 overflow-auto bg-secondary">
-          <div className="md:py-20 ">{children}</div>
+          <div className="md:py-20">{children}</div>
         </div>
       </main>
     </div>

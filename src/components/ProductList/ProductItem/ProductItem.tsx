@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { IProduct } from "@/common/interfaces/product.interfaces";
-import Image from "next/image";
 import { OrderPrice } from "@/components/OrderPrice";
+import { IProduct } from "@/interfaces/product.interfaces";
+import Image from "next/image";
+import { FC } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 interface IProductItemProps {

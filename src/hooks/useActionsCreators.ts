@@ -1,11 +1,12 @@
-import { ActionCreatorsMapObject, bindActionCreators } from "@reduxjs/toolkit";
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
+import { ActionCreatorsMapObject, bindActionCreators } from "redux";
 import { AppDispatch } from "../store";
 
-export const useActionsCreator = (actions: ActionCreatorsMapObject) => {
+export const useActionsCreator = <T extends ActionCreatorsMapObject>(
+  actions: T
+): { [K in keyof T]: (...args: Parameters<T[K]>) => ReturnType<T[K]> } => {
   const dispatch = useDispatch<AppDispatch>();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(() => bindActionCreators(actions, dispatch), []);
+  return useMemo(() => bindActionCreators(actions, dispatch), [actions, dispatch]);
 };

@@ -1,4 +1,4 @@
-import { IOrder } from "@/common/interfaces/order.interfaces";
+import { IOrder } from "@/interfaces/order.interfaces";
 import { OrderItem } from "./OrderItem";
 
 interface OrdersProps {

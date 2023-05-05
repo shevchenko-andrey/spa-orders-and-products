@@ -1,6 +1,8 @@
+import { ResponseStatus } from "@/common/enums";
+import { RootState } from "@/store";
+
 export interface ILoginResponse {
   accessToken: string;
-  refreshToken: string;
 }
 
 export interface IUserCredentials {
@@ -18,4 +20,20 @@ export interface ICurrentUser extends IUserInfo {
   email: string;
 }
 
-export type RegisterRequest = IUserInfo & IUserCredentials;
+export interface IServerError {
+  error: string;
+  message: string;
+  statusCode: ResponseStatus;
+}
+
+export interface ThunkApiConfig {
+  state: RootState;
+  rejectValue: string;
+}
+
+export interface IThunkError {
+  error: string;
+  payload: IServerError;
+}
+
+export type RegisterCredentials = IUserInfo & IUserCredentials;

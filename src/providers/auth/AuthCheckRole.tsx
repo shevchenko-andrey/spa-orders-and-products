@@ -1,14 +1,16 @@
-import { useStateSelector } from "@/hooks";
+import { useAppSelector } from "@/hooks";
+import { getAccessToken } from "@/store/auth";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { PrivateLayout } from "../../components/PrivateLayout";
 
 export const AuthCheckRole: FC<{ children: JSX.Element }> = ({ children }) => {
-  const isLoggedIn = useStateSelector((state) => state.auth.isLoggedIn);
+  const isLogged = useAppSelector(getAccessToken);
+
   const router = useRouter();
 
-  if (!isLoggedIn) {
-    router.push("/");
+  if (!isLogged) {
+    router.replace("/login");
   }
 
   return <PrivateLayout>{children}</PrivateLayout>;

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { TopBar } from "./TopBar";
 
 interface ILayoutProps {
   children: JSX.Element | JSX.Element[];
@@ -7,7 +8,7 @@ interface ILayoutProps {
 export const PublicLayout: FC<ILayoutProps> = ({ children }) => {
   return (
     <div>
-      <p>public</p>
+      <TopBar />
       {children}
     </div>
   );

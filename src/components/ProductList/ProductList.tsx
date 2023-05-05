@@ -1,4 +1,4 @@
-import { IProduct } from "@/common/interfaces/product.interfaces";
+import { IProduct } from "@/interfaces/product.interfaces";
 import { ProductItem } from "./ProductItem";
 
 interface IProductListProps {

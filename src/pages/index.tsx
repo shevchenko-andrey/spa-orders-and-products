@@ -1,6 +1,7 @@
 import { ComingSoon } from "@/components/ComingSoon";
 
-const Home = () => {
+const HomePage = () => {
   return <ComingSoon />;
 };
-export default Home;
+
+export default HomePage;

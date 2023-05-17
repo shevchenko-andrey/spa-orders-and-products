@@ -1,4 +1,4 @@
-import { IPrice } from "@/common/interfaces/product.interfaces";
+import { IPrice } from "@/interfaces/product.interfaces";
 
 interface OrderPriceProps {
   prices: IPrice[];

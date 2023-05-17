@@ -1,4 +1,4 @@
-import { IOrder } from "@/common/interfaces/order.interfaces";
+import { IOrder } from "@/interfaces/order.interfaces";
 import { FaList } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { OrderPrice } from "../../OrderPrice";

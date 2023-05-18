@@ -3,18 +3,17 @@ import { Avatar } from "./Avatar";
 import { NavMenu } from "./NavMenu";
 import { TopBar } from "./TopBar";
 
-interface ILayoutProps {
-  children: JSX.Element | JSX.Element[];
+interface IAppPages {
+  name: string;
+  link: string;
 }
 
-const pages = [
-  { name: "Income", link: "/user/income" },
-  { name: "Groups", link: "/user/groups" },
-  { name: "Products", link: "/user/products" },
-  { name: "Settings", link: "/user/settings" },
-];
+interface ILayoutProps {
+  children: JSX.Element | JSX.Element[];
+  pages: IAppPages[];
+}
 
-export const PrivateLayout: FC<ILayoutProps> = ({ children }) => {
+export const Layout: FC<ILayoutProps> = ({ children, pages }) => {
   return (
     <div className="h-screen overflow-hidden">
       <TopBar />

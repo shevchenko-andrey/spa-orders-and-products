@@ -1,4 +1,4 @@
-import { PublicLayout } from "@/components/PublicLayout";
+import { Layout } from "@/components/Layout";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { FC, useMemo } from "react";
@@ -8,6 +8,14 @@ enum SimpleWrapperEndpoints {
   REGISTER = "/register",
 }
 
+const publicPages = [
+  { name: "Home", link: "/" },
+  { name: "Computers", link: "/computers" },
+  { name: "Tablets", link: "/tablets" },
+  { name: "Laptops", link: "/laptops" },
+  { name: "Phones", link: "/phones" },
+];
+
 const DynamicCheckRole = dynamic(() => import("./AuthCheckRole").then((mod) => mod.AuthCheckRole), {
   ssr: false,
 });
@@ -15,20 +23,20 @@ const DynamicCheckRole = dynamic(() => import("./AuthCheckRole").then((mod) => m
 export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
   const { asPath } = useRouter();
 
-  const isPrivate = useMemo(() => asPath.startsWith("/user"), [asPath]);
-
   const isSimpleWrapper = useMemo(
     () => asPath === SimpleWrapperEndpoints.REGISTER || asPath === SimpleWrapperEndpoints.LOGIN,
     [asPath]
   );
 
+  const isPublic = useMemo(() => publicPages.some((page) => page.link === asPath), [asPath]);
+
+  if (isPublic) {
+    return <Layout pages={publicPages}>{children}</Layout>;
+  }
+
   if (isSimpleWrapper) {
     return <>{children}</>;
   }
 
-  if (isPrivate) {
-    return <DynamicCheckRole>{children}</DynamicCheckRole>;
-  }
-
-  return <PublicLayout>{children}</PublicLayout>;
+  return <DynamicCheckRole>{children}</DynamicCheckRole>;
 };

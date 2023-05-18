@@ -1,4 +1,4 @@
-import { ResponseStatus } from "@/common/enums";
+import { ResponseStatus, UserRoles } from "@/common/enums";
 import { RootState } from "@/store";
 
 export interface ILoginResponse {
@@ -13,6 +13,7 @@ export interface IUserCredentials {
 export interface IUserInfo {
   firstName: string;
   lastName: string;
+  role: UserRoles;
 }
 
 export interface ICurrentUser extends IUserInfo {

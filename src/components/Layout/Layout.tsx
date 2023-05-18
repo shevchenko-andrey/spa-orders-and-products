@@ -1,36 +1,31 @@
-import { FC } from "react";
-import { Avatar } from "./Avatar";
-import { NavMenu } from "./NavMenu";
+import { IAppPage } from "@/common/route.interfaces";
+import { FC, useState } from "react";
+import { SideBar } from "./Sidebar";
 import { TopBar } from "./TopBar";
-
-interface IAppPages {
-  name: string;
-  link: string;
-}
 
 interface ILayoutProps {
   children: JSX.Element | JSX.Element[];
-  pages: IAppPages[];
+  pages: IAppPage[];
 }
 
 export const Layout: FC<ILayoutProps> = ({ children, pages }) => {
+  const [showDrawer, setShowDrawer] = useState(false);
+
+  const toggleDrawer = () => {
+    setShowDrawer((prev) => !prev);
+  };
+
   return (
-    <div className="h-screen overflow-hidden">
-      <TopBar />
+    <>
+      <TopBar toggleDrawer={toggleDrawer} />
 
-      <main className="w-full h-full md:flex">
-        <div className="md:block w-60 hidden py-12">
-          <Avatar image="/avatar.jpeg" />
-
-          <div className="mt-10 overflow-auto">
-            <NavMenu pages={pages} />
-          </div>
-        </div>
+      <main className="w-full h-screen md:flex">
+        <SideBar handleDropdownIsOpen={toggleDrawer} isDropdownOpen={showDrawer} pages={pages} />
 
         <div className="w-full h-full p-2 overflow-auto bg-secondary">
           <div className="md:py-20">{children}</div>
         </div>
       </main>
-    </div>
+    </>
   );
 };

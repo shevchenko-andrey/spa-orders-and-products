@@ -3,6 +3,7 @@ import { RootState } from "@/store";
 
 export interface ILoginResponse {
   accessToken: string;
+  user: ICurrentUser;
 }
 
 export interface IUserCredentials {

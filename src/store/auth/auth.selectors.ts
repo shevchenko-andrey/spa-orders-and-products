@@ -6,7 +6,15 @@ export const getAuth = (state: RootState) => {
 };
 
 export const getUser = (state: RootState) => {
-  return getAuth(state).user;
+  return (
+    getAuth(state).user ?? {
+      email: "",
+      firstName: "",
+      id: null,
+      lastName: "",
+      role: UserRoles.GUEST,
+    }
+  );
 };
 
 export const getUserRole = (state: RootState) => {

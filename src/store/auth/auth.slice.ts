@@ -1,4 +1,4 @@
-import { RequestStatus } from "@/common/enums";
+import { RequestStatus, UserRoles } from "@/common/enums";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { isErrorCase, isLoadingCase } from "../app.matchers";
 import { login, logout, register } from "./auth.actions";
@@ -8,6 +8,7 @@ interface IUser {
   email: string;
   firstName: string;
   lastName: string;
+  role: UserRoles;
 }
 
 export interface AuthState {
@@ -44,6 +45,7 @@ const authSlice = createSlice({
     builder.addCase(login.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken;
       state.status = RequestStatus.SUCCESS;
+      state.user = action.payload.user;
     });
 
     builder.addCase(logout.fulfilled, () => {

@@ -6,6 +6,7 @@ import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>

@@ -1,17 +1,29 @@
+import { UserRoles } from "@/common/enums";
 import { useAppSelector } from "@/hooks";
-import { getAccessToken } from "@/store/auth";
+import { getUserRole } from "@/store/auth";
 import { useRouter } from "next/router";
-import { FC } from "react";
-import { PrivateLayout } from "../../components/PrivateLayout";
+import { FC, useMemo } from "react";
+import { Layout } from "../../components/Layout";
+
+const privatePages = [
+  { name: "Income", link: "/income", roles: [UserRoles.ADMIN] },
+  { name: "Orders", link: "/orders", roles: [UserRoles.USER] },
+  { name: "Groups", link: "/groups", roles: [UserRoles.ADMIN] },
+  { name: "Products", link: "/products", roles: [UserRoles.ADMIN] },
+  { name: "Settings", link: "/settings", roles: [UserRoles.ADMIN, UserRoles.USER] },
+];
 
 export const AuthCheckRole: FC<{ children: JSX.Element }> = ({ children }) => {
-  const isLogged = useAppSelector(getAccessToken);
-
+  const role = useAppSelector(getUserRole);
   const router = useRouter();
 
-  if (!isLogged) {
-    router.replace("/login");
+  if (role === UserRoles.GUEST) {
+    router.push("/");
   }
 
-  return <PrivateLayout>{children}</PrivateLayout>;
+  const pages = useMemo(() => {
+    return privatePages.filter((page) => page.roles.includes(role));
+  }, [role]);
+
+  return <Layout pages={pages}>{children}</Layout>;
 };

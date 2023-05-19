@@ -1,4 +1,4 @@
-import { ComingSoon } from "../../../components/ComingSoon/ComingSoon";
+import { ComingSoon } from "@/components/ComingSoon/ComingSoon";
 
 const Settings: React.FC = ({}) => {
   return <ComingSoon />;

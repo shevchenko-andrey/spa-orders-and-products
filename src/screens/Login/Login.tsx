@@ -16,7 +16,7 @@ export const Login: React.FC = ({}) => {
       <Link className="underline block mt-2 text-secondary-dark" href="/register">
         create a new account
       </Link>
-      {status === RequestStatus.SUCCESS && token && <Redirect to="/user/income" />}
+      {status === RequestStatus.SUCCESS && token && <Redirect to="/income" />}
     </div>
   );
 };

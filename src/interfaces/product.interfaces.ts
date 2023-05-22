@@ -24,3 +24,10 @@ export interface IProduct {
   prices: IPrice[];
   date: string;
 }
+
+export interface IProductResponse {
+  products: IProduct[];
+  totalPages: number;
+  count: number;
+  currentPage: number;
+}

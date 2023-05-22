@@ -21,14 +21,17 @@ const DynamicCheckRole = dynamic(() => import("./AuthCheckRole").then((mod) => m
 });
 
 export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
-  const { asPath } = useRouter();
+  const { asPath, pathname } = useRouter();
 
   const isSimpleWrapper = useMemo(
     () => asPath === SimpleWrapperEndpoints.REGISTER || asPath === SimpleWrapperEndpoints.LOGIN,
     [asPath]
   );
 
-  const isPublic = useMemo(() => publicPages.some((page) => page.link === asPath), [asPath]);
+  const isPublic = useMemo(
+    () => publicPages.some((page) => page.link === asPath) || pathname === "/product/[id]",
+    [asPath, pathname]
+  );
 
   if (isPublic) {
     return <Layout pages={publicPages}>{children}</Layout>;

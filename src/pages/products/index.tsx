@@ -1,4 +1,4 @@
-import { ProductList } from "@/components/ProductList";
+import { ProductList } from "@/screens/Products/ProductList";
 import { IProduct } from "@/interfaces/product.interfaces";
 import { GetServerSideProps } from "next";
 

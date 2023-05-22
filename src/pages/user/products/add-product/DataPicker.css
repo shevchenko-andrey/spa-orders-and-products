@@ -1,0 +1,7 @@
+.react-datepicker__day--selected {
+    background-color: greenyellow;
+}
+
+.react-datepicker__day--today {
+    background-color: greenyellow;
+}

@@ -1,13 +1,14 @@
-import { RequestStatus } from "@/common/enums";
+import { RequestStatus, UserRoles } from "@/common/enums";
 import { Redirect } from "@/components/Redirect";
 import { useActionsCreator, useAppSelector } from "@/hooks";
-import { authActions, getAccessToken, getStatus } from "@/store/auth";
+import { authActions, getIsLogged, getStatus, getUserRole } from "@/store/auth";
 import Link from "next/link";
 import { LoginForm } from "./LoginForm";
 
 export const Login: React.FC = ({}) => {
   const status = useAppSelector(getStatus);
-  const token = useAppSelector(getAccessToken);
+  const isLogged = useAppSelector(getIsLogged);
+  const role = useAppSelector(getUserRole);
   const actions = useActionsCreator(authActions);
 
   return (
@@ -16,7 +17,8 @@ export const Login: React.FC = ({}) => {
       <Link className="underline block mt-2 text-secondary-dark" href="/register">
         create a new account
       </Link>
-      {status === RequestStatus.SUCCESS && token && <Redirect to="/income" />}
+      {status === RequestStatus.SUCCESS && role === UserRoles.ADMIN && <Redirect to="/orders" />}
+      {status === RequestStatus.SUCCESS && isLogged && <Redirect to="/orders" />}
     </div>
   );
 };

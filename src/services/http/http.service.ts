@@ -1,7 +1,6 @@
-import { store } from "@/store";
-import { authActions } from "@/store/auth";
 import axios, { AxiosInstance } from "axios";
 import { authService } from "../auth/auth.service";
+import { localStorageService } from "../local-storage";
 
 export interface IHttpServiceConfig {
   url: string;
@@ -12,7 +11,7 @@ export abstract class HttpService {
   http: AxiosInstance;
 
   constructor(private config: IHttpServiceConfig) {
-    const { url, isPublic = false } = config;
+    const { url = "", isPublic = false } = config;
 
     this.http = axios.create({
       baseURL: `${process.env.NEXT_PUBLIC_API_URL}/${url}`,
@@ -26,7 +25,7 @@ export abstract class HttpService {
     }
 
     this.http.interceptors.request.use((config) => {
-      const accessToken = store.getState().auth.accessToken;
+      const accessToken = localStorageService.getAccessToken();
       config.headers.Authorization = "Bearer " + accessToken;
       return config;
     });
@@ -39,7 +38,7 @@ export abstract class HttpService {
         if (error.response.status === 401 && !originalRequest._retry) {
           const accessToken = await authService.refreshToken();
 
-          store.dispatch(authActions.setAccessToken(accessToken));
+          localStorageService.setAccessToken(accessToken);
 
           originalRequest._retry = true;
 

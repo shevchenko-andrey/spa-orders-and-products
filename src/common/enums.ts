@@ -16,6 +16,10 @@ export const enum RequestStatus {
   SUCCESS = "SUCCESS",
 }
 
+export const enum LocalStorageKeys {
+  ACCESS_TOKEN = "accessToken",
+}
+
 export const enum ResponseStatus {
   OK = 200,
   NO_CONTENT = 201,

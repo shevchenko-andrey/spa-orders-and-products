@@ -14,23 +14,19 @@ interface IUser {
 export interface AuthState {
   user?: IUser | null;
   status: RequestStatus;
-  accessToken: string;
+  isLogged: boolean;
 }
 
 const initialState: AuthState = {
   user: null,
   status: RequestStatus.INIT,
-  accessToken: "",
+  isLogged: false,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAccessToken: (state, action: PayloadAction<string>) => {
-      state.accessToken = action.payload;
-    },
-
     setStatus: (state, action: PayloadAction<RequestStatus>) => {
       state.status = action.payload;
     },
@@ -43,9 +39,9 @@ const authSlice = createSlice({
     });
 
     builder.addCase(login.fulfilled, (state, action) => {
-      state.accessToken = action.payload.accessToken;
       state.status = RequestStatus.SUCCESS;
-      state.user = action.payload.user;
+      state.user = action.payload;
+      state.isLogged = true;
     });
 
     builder.addCase(logout.fulfilled, () => {

@@ -25,6 +25,6 @@ export const getStatus = (state: RootState) => {
   return getAuth(state).status;
 };
 
-export const getAccessToken = (state: RootState) => {
-  return getAuth(state).accessToken;
+export const getIsLogged = (state: RootState) => {
+  return getAuth(state).isLogged;
 };

@@ -23,10 +23,10 @@ export const Modal: FC<IModalProps> = ({ children, isOpen, handleClose }) => {
       <div className="flex justify-center items-center h-full">
         <div ref={ref} className="bg-white p-4 max-w-[80%] rounded-xl z-10 relative">
           <button
-            className="absolute p-1 rounded-full shadow-slate-950 shadow-2xl bg-white -top-4 -right-4 text-2xl text-gray-500"
+            className="absolute p-1 rounded-full shadow-3xl bg-white -top-4 -right-4 text-2xl text-gray-500"
             onClick={handleClose}
           >
-            <IoIosClose className="fill-secondary-dark" />
+            <IoIosClose className="fill-secondary-dark " />
           </button>
 
           {children}

@@ -3,12 +3,12 @@ import { authService } from "../auth/auth.service";
 import { localStorageService } from "../local-storage";
 
 export interface IHttpServiceConfig {
-  url: string;
+  url?: string;
   isPublic?: boolean;
 }
 
 export abstract class HttpService {
-  http: AxiosInstance;
+  protected http: AxiosInstance;
 
   constructor(private config: IHttpServiceConfig) {
     const { url = "", isPublic = false } = config;

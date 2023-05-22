@@ -1,15 +1,18 @@
-import { IProduct } from "@/interfaces/product.interfaces";
-import { ProductItem } from "./ProductItem";
+import { IProduct } from "@/interfaces";
+import { FC } from "react";
+import { ProductCard } from "./ProductCard";
 
-interface IProductListProps {
+interface ProductListProps {
   products: IProduct[];
 }
 
-export const ProductList: React.FC<IProductListProps> = ({ products }) => {
+export const ProductList: FC<ProductListProps> = ({ products }) => {
   return (
-    <ul>
-      {products.map((product: IProduct) => (
-        <ProductItem key={product.id} product={product} />
+    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {products.map(({ title, id, photo, prices }) => (
+        <li key={id}>
+          <ProductCard id={id} title={title} photo={photo} prices={prices} />
+        </li>
       ))}
     </ul>
   );

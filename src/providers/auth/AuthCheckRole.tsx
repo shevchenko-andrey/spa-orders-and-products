@@ -9,7 +9,7 @@ const privatePages = [
   { name: "Income", link: "/income", roles: [UserRoles.ADMIN] },
   { name: "Orders", link: "/orders", roles: [UserRoles.USER] },
   { name: "Groups", link: "/groups", roles: [UserRoles.ADMIN] },
-  { name: "Products", link: "/products", roles: [UserRoles.ADMIN] },
+  { name: "Products", link: "/products/edit", roles: [UserRoles.ADMIN] },
   { name: "Settings", link: "/settings", roles: [UserRoles.ADMIN, UserRoles.USER] },
 ];
 

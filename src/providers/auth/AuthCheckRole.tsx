@@ -9,9 +9,9 @@ import { Layout } from "../../components/Layout";
 const privatePages = [
   { name: "Income", link: "/income", roles: [UserRoles.USER] },
   { name: "Orders", link: "/orders", roles: [UserRoles.USER] },
-  { name: "Groups", link: "/groups", roles: [UserRoles.USER] },
-  { name: "Products", link: "/products/edit", roles: [UserRoles.USER] },
-  { name: "Settings", link: "/settings", roles: [UserRoles.USER, UserRoles.USER] },
+  { name: "Groups", link: "/groups", roles: [UserRoles.ADMIN] },
+  { name: "Products", link: "/products/edit", roles: [UserRoles.ADMIN] },
+  { name: "Settings", link: "/settings", roles: [UserRoles.ADMIN, UserRoles.USER] },
 ];
 
 export const AuthCheckRole: FC<{ children: JSX.Element }> = ({ children }) => {

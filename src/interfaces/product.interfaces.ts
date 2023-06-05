@@ -24,3 +24,10 @@ export interface IProductResponse {
   count: number;
   currentPage: number;
 }
+
+export interface IProductResponse {
+  products: IProduct[];
+  totalPages: number;
+  count: number;
+  currentPage: number;
+}

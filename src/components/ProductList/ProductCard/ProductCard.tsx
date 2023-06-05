@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { IPrice } from "@/interfaces";
+import { FC, useMemo } from "react";
+
 
 interface ProductCardProps {
   id: number;
@@ -52,5 +55,5 @@ export const ProductCard: FC<ProductCardProps> = ({
         <p className="text-gray-700">{shortDescription}</p>
       </div>
     </article>
-  );
-};
+  )
+}

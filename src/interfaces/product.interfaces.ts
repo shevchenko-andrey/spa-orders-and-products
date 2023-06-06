@@ -1,4 +1,3 @@
-import { IOrderInfo } from "./order.interfaces";
 export interface IPrice {
   value: number;
   symbol: string;
@@ -12,17 +11,18 @@ export interface IGuarantee {
 
 export interface IProduct {
   id: number;
-  serialNumber: number;
-  isNew: number;
-  isAvailable: number;
-  order: IOrderInfo;
+  isAvailable: boolean;
   photo: string;
   title: string;
-  type: string;
-  specification: string;
-  guarantee: IGuarantee;
-  prices: IPrice[];
-  date: string;
+  price: number;
+  shortDescription: string;
+}
+
+export interface IProductResponse {
+  products: IProduct[];
+  totalPages: number;
+  count: number;
+  currentPage: number;
 }
 
 export interface IProductResponse {

@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import { FC, useMemo } from "react";
 import { Layout } from "../../components/Layout";
 
+// TODO: fix routing
 const privatePages = [
-  { name: "Income", link: "/income", roles: [UserRoles.ADMIN] },
+  { name: "Income", link: "/income", roles: [UserRoles.USER] },
   { name: "Orders", link: "/orders", roles: [UserRoles.USER] },
   { name: "Groups", link: "/groups", roles: [UserRoles.ADMIN] },
   { name: "Products", link: "/products/edit", roles: [UserRoles.ADMIN] },

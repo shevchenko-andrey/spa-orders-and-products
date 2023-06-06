@@ -1,6 +1,9 @@
 import { ProductList } from "@/screens/Products/ProductList";
 import { IProduct } from "@/interfaces/product.interfaces";
 import { GetServerSideProps } from "next";
+import { IoMdAdd } from "react-icons/io";
+import NewProduct from "./add-product";
+import DataPicker from "./add-product/DataPicker";
 
 interface IProductsProps {
   products: IProduct[];
@@ -8,9 +11,19 @@ interface IProductsProps {
 
 const Products: React.FC<IProductsProps> = ({ products }) => {
   return (
-    <div className="sm:mx-5 md:mx-10">
-      <ProductList products={products} />
-    </div>
+    <>
+      <div className="sm:mx-5 md:mx-10">
+        <div className="flex items-center my-5 md:mt-0">
+          <button className="flex items-center justify-center rounded-full w-10 h-10 bg-primary hover:bg-primary-dark hover:drop-shadow-xl">
+            <IoMdAdd size={20} className="fill-white" />
+          </button>
+          <h2 className="text-4xl ml-4">Products</h2>
+        </div>
+        <ProductList products={products} />
+      </div>
+      {/* <NewProduct /> */}
+      <DataPicker startDate={new Date()} />
+    </>
   );
 };
 export default Products;

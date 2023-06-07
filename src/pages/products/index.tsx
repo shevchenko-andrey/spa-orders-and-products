@@ -2,8 +2,6 @@ import { ProductList } from "@/screens/Products/ProductList";
 import { IProduct } from "@/interfaces/product.interfaces";
 import { GetServerSideProps } from "next";
 import { IoMdAdd } from "react-icons/io";
-import NewProduct from "./add-product";
-import DataPicker from "./add-product/DataPicker";
 
 interface IProductsProps {
   products: IProduct[];
@@ -21,8 +19,6 @@ const Products: React.FC<IProductsProps> = ({ products }) => {
         </div>
         <ProductList products={products} />
       </div>
-      {/* <NewProduct /> */}
-      <DataPicker startDate={new Date()} />
     </>
   );
 };

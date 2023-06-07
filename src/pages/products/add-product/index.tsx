@@ -1,15 +1,19 @@
+import { ProductInputField } from "@/components/ui/ProductInputField";
 import { Formik, Form, Field } from "formik";
+
+enum Categories {
+  Laptops = "Laptops",
+  Phones = "Phones",
+  Computers = "Computers",
+}
 
 interface INewProduct {
   title: string;
   description: string;
+  fullDescription: "";
   price: number;
-  from: string;
-  to: string;
-  isNew: boolean;
-  group: string;
-  order: string;
-  date: string;
+  warrantyPeriod: number;
+  category: Categories;
   image: string;
 }
 
@@ -17,18 +21,15 @@ const NewProduct: React.FC = () => {
   const initialValues: INewProduct = {
     title: "",
     description: "",
+    fullDescription: "",
     price: 0,
-    from: "",
-    to: "",
-    isNew: true,
-    group: "",
-    order: "",
-    date: "",
+    warrantyPeriod: 1,
+    category: Categories.Computers,
     image: "",
   };
   return (
     <div>
-      <h1>Add new product</h1>
+      <h1 className="ml-5 text-emerald-800 text-4xl font-medium">Add new product</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -37,28 +38,41 @@ const NewProduct: React.FC = () => {
           actions.setSubmitting(false);
         }}
       >
-        <Form>
-          <label htmlFor="title">Title</label>
-          <Field id="title" name="title" placeholder="Title" />
-          <label htmlFor="description">Description</label>
-          <Field id="description" name="description" placeholder="Description" />
-          <label htmlFor="price">Price</label>
-          <Field id="price" name="price" placeholder="Price" />
-          <label htmlFor="from">From</label>
-          <Field id="from" name="from" placeholder="From" />
-          <label htmlFor="to">To</label>
-          <Field id="to" name="to" placeholder="To" />
-          <label htmlFor="isNew">isNew</label>
-          <Field id="isNew" name="isNew" placeholder="isNew" />
-          <label htmlFor="group">Group</label>
-          <Field id="group" name="group" placeholder="Group" />
-          <label htmlFor="title">Order</label>
-          <Field id="order" name="order" placeholder="Order" />
-          <label htmlFor="date">Date</label>
-          <Field id="date" name="date" placeholder="Date" />
-          <label htmlFor="image">Image</label>
-          <Field id="image" name="image" placeholder="Image" />
-          <button type="submit">Submit</button>
+        <Form className="flex flex-col p-3 ml-2 w-[600px]">
+          <ProductInputField name="title" title="Title" />
+          <label
+            htmlFor="category"
+            style={{ display: "block" }}
+            className="block text-green-800 mb-2 text-xl"
+          >
+            Select category
+          </label>
+          <Field
+            as="select"
+            name="category"
+            className="rounded-full border py-1 px-4 outline-none focus:border-purple-500 w-[600px] text-lime-700 cursor-pointer"
+          >
+            <option value={Categories.Computers} label={Categories.Computers}>
+              {Categories.Computers}
+            </option>
+            <option value={Categories.Laptops} label={Categories.Laptops}>
+              {Categories.Laptops}
+            </option>
+            <option value={Categories.Phones} label={Categories.Phones}>
+              {Categories.Phones}
+            </option>
+          </Field>
+          <ProductInputField name="description" title="Description" />
+          <ProductInputField name="fullDescription" title="Full description" />
+          <ProductInputField name="price" title="Price" />
+          <ProductInputField name="warrantyPeriod" title="Warranty period" />
+          <ProductInputField name="image" title="Image" type="file" accept="image/*" />
+          <button
+            type="submit"
+            className="w-[100px] border-solid rounded border-2 border-green-800 mt-4 px-5 py-3 ml-auto mr-auto"
+          >
+            Submit
+          </button>
         </Form>
       </Formik>
     </div>

@@ -1,11 +1,10 @@
 import { useField } from "formik";
-import { HTMLInputTypeAttribute } from "react";
+import { InputHTMLAttributes } from "react";
 
-interface InputFieldProps {
+interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   title: string;
   className?: string;
-  type?: HTMLInputTypeAttribute;
 }
 
 export const InputField: React.FC<InputFieldProps> = ({

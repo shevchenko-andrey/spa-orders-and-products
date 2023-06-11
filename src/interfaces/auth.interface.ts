@@ -39,3 +39,5 @@ export interface IThunkError {
 }
 
 export type RegisterCredentials = IUserInfo & IUserCredentials;
+
+export type RegisterRequest = Omit<RegisterCredentials, "role">;
